@@ -2,7 +2,7 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android"
         id="cordova-plugin-tbs-webview"
-        version="0.0.1">
+        version="0.1.0">
 
     <name>TBS WebView</name>
     <description>use x5 for cordova to get a better webview browsing experience</description>
@@ -42,10 +42,15 @@
         <source-file src="platforms/android/src/org/apache/cordova/x5engine/X5WebViewClient.java" target-dir="src/org/apache/cordova/x5engine"/>
         <source-file src="platforms/android/src/org/apache/cordova/x5engine/X5WebViewEngine.java" target-dir="src/org/apache/cordova/x5engine"/>
 
+        <source-file src="platforms/android/src/com/liuxiaoy/cordova/MainApplication.java" target-dir="src/com/liuxiaoy/cordova"/>
+
         <source-file src="platforms/android/libs/tbs_sdk_thirdapp_v3.5.0.1004_43500_sharewithdownload_withoutGame_obfs_20170801_113025.jar" target-dir="libs"/>
 	    <source-file src="platforms/android/libs/armeabi/liblbs.so" target-dir="libs/armeabi"/>
 
     </platform>
+
+    <hook type="after_plugin_add" src="scripts/afterPluginInstall.js" />
+    <hook type="before_plugin_rm" src="scripts/beforePluginRemove.js" />
 
     <info>
         If X5 version has upgraded,you can update TBS(.so and .jar) by yourself.
