@@ -1,25 +1,29 @@
 {
-  "name": "x5webview-cordova-plugin",
-  "version": "1.1.1",
-  "description": "Changes the default WebView to x5engine",
+  "name": "cordova-plugin-tbs-webview",
+  "version": "0.0.1",
+  "description": "Changes the default WebView to x5",
   "cordova": {
-    "id": "x5webview-cordova-plugin",
+    "id": "cordova-plugin-tbs-webview",
     "platforms": [
       "android"
     ]
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/runner525/x5webview-cordova-plugin.git"
+    "url": "git+https://github.com/liuxiaoy/cordova-plugin-tbs-webview.git"
   },
   "keywords": [
-    "cordova",
-    "chromium",
-    "x5engine",
-    "webview",
     "ecosystem:cordova",
-    "cordova-android"
+    "cordova-android",
+    "webview",
+    "x5"
   ],
+  "author": "liuxiaoy",
+  "license": "Apache 2.0",
+  "bugs": {
+    "url": "https://github.com/liuxiaoy/cordova-plugin-tbs-webview/issues"
+  },
+  "homepage": "https://github.com/liuxiaoy/cordova-plugin-tbs-webview",
   "engines": [
     {
       "name": "cordova-android",
@@ -29,11 +33,5 @@
       "name": "cordova-plugman",
       "version": ">=5.2.0"
     }
-  ],
-  "author": "lz",
-  "license": "Apache 2.0",
-  "bugs": {
-    "url": "https://github.com/runner525/x5webview-cordova-plugin/issues"
-  },
-  "homepage": "https://github.com/runner525/x5webview-cordova-plugin#readme"
+  ]
 }
