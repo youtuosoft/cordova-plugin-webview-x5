@@ -2,7 +2,7 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android"
         id="cordova-plugin-tbs-webview"
-        version="0.1.0">
+        version="0.1.1">
 
     <name>TBS WebView</name>
     <description>use x5 for cordova to get a better webview browsing experience</description>
@@ -21,7 +21,7 @@
             <preference name="webView" value="org.apache.cordova.x5engine.X5WebViewEngine"/>
             <preference name="appUserAgent" value="x5webview"/>
             <preference name="android-minSdkVersion" value="15" />
-	    <allow-navigation href="*" />
+	        <allow-navigation href="*" />
         </config-file>
 
         <config-file target="AndroidManifest.xml" parent="/*">
