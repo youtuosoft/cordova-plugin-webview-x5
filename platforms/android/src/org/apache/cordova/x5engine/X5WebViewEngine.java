@@ -27,7 +27,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.ApplicationInfo;
 import android.os.Build;
-import android.util.Log;
 import android.view.View;
 import android.webkit.ValueCallback;
 
@@ -42,6 +41,7 @@ import org.apache.cordova.CordovaResourceApi;
 import org.apache.cordova.CordovaWebView;
 import org.apache.cordova.CordovaWebViewEngine;
 import org.apache.cordova.ICordovaCookieManager;
+import org.apache.cordova.LOG;
 import org.apache.cordova.NativeToJsMessageQueue;
 import org.apache.cordova.PluginManager;
 
@@ -64,7 +64,7 @@ public class X5WebViewEngine implements CordovaWebViewEngine {
     protected final X5CookieManager cookieManager;
     protected CordovaPreferences preferences;
     protected CordovaBridge bridge;
-    protected Client client;
+    protected CordovaWebViewEngine.Client client;
     protected CordovaWebView parentWebView;
     protected CordovaInterface cordova;
     protected PluginManager pluginManager;
@@ -118,6 +118,8 @@ public class X5WebViewEngine implements CordovaWebViewEngine {
                 X5WebViewEngine.this.cordova.getActivity().runOnUiThread(r);
             }
         }));
+        if(Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN_MR2)
+            nativeToJsMessageQueue.addBridgeMode(new NativeToJsMessageQueue.EvalBridgeMode(this, cordova));
         bridge = new CordovaBridge(pluginManager, nativeToJsMessageQueue);
         exposeJsInterface(webView, bridge);
     }
@@ -153,20 +155,20 @@ public class X5WebViewEngine implements CordovaWebViewEngine {
             Method gingerbread_getMethod =  WebSettings.class.getMethod("setNavDump", new Class[] { boolean.class });
 
             String manufacturer = Build.MANUFACTURER;
-            Log.d(TAG, "CordovaWebView is running on device made by: " + manufacturer);
+            LOG.d(TAG, "X5WebView is running on device made by: " + manufacturer);
             if(Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB &&
                     Build.MANUFACTURER.contains("HTC"))
             {
                 gingerbread_getMethod.invoke(settings, true);
             }
         } catch (NoSuchMethodException e) {
-            Log.d(TAG, "We are on a modern version of Android, we will deprecate HTC 2.3 devices in 2.8");
+            LOG.d(TAG, "We are on a modern version of Android, we will deprecate HTC 2.3 devices in 2.8");
         } catch (IllegalArgumentException e) {
-            Log.d(TAG, "Doing the NavDump failed with bad arguments");
+            LOG.d(TAG, "Doing the NavDump failed with bad arguments");
         } catch (IllegalAccessException e) {
-            Log.d(TAG, "This should never happen: IllegalAccessException means this isn't Android anymore");
+            LOG.d(TAG, "This should never happen: IllegalAccessException means this isn't Android anymore");
         } catch (InvocationTargetException e) {
-            Log.d(TAG, "This should never happen: InvocationTargetException means this isn't Android anymore.");
+            LOG.d(TAG, "This should never happen: InvocationTargetException means this isn't Android anymore.");
         }
 
         //We don't save any form data in the application
@@ -250,14 +252,14 @@ public class X5WebViewEngine implements CordovaWebViewEngine {
         try {
             WebView.setWebContentsDebuggingEnabled(true);
         } catch (IllegalArgumentException e) {
-            Log.d(TAG, "You have one job! To turn on Remote Web Debugging! YOU HAVE FAILED! ");
+            LOG.d(TAG, "You have one job! To turn on Remote Web Debugging! YOU HAVE FAILED! ");
             e.printStackTrace();
         }
     }
 
     private static void exposeJsInterface(WebView webView, CordovaBridge bridge) {
         if ((Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1)) {
-            Log.i(TAG, "Disabled addJavascriptInterface() bridge since Android version is old.");
+            LOG.i(TAG, "Disabled addJavascriptInterface() bridge since Android version is old.");
             // Bug being that Java Strings do not get converted to JS strings automatically.
             // This isn't hard to work-around on the JS side, but it's easier to just
             // use the prompt bridge instead.
@@ -339,7 +341,7 @@ public class X5WebViewEngine implements CordovaWebViewEngine {
             try {
                 webView.getContext().unregisterReceiver(receiver);
             } catch (Exception e) {
-                Log.e(TAG, "Error unregistering configuration receiver: " + e.getMessage(), e);
+                LOG.e(TAG, "Error unregistering configuration receiver: " + e.getMessage(), e);
             }
         }
     }
@@ -354,11 +356,11 @@ public class X5WebViewEngine implements CordovaWebViewEngine {
          com.tencent.smtt.sdk.ValueCallback mCallback = new com.tencent.smtt.sdk.ValueCallback() {
             @Override
             public void onReceiveValue(Object o) {
-                if(o instanceof String)
+                if(proxyCallback != null && o instanceof String) {
                     proxyCallback.onReceiveValue((String) o);
+                }
             }
         };
         webView.evaluateJavascript(js,mCallback);
     }
 }
-

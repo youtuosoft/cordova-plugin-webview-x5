@@ -25,10 +25,14 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Message;
+
 import com.tencent.smtt.export.external.interfaces.ClientCertRequest;
 import com.tencent.smtt.export.external.interfaces.HttpAuthHandler;
 import com.tencent.smtt.export.external.interfaces.SslError;
 import com.tencent.smtt.export.external.interfaces.SslErrorHandler;
+import com.tencent.smtt.export.external.interfaces.WebResourceError;
+import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
 import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
@@ -109,8 +113,8 @@ public class X5WebViewClient extends WebViewClient {
      * @param view
      * @param request
      */
-    @TargetApi(21)
-    public void onReceivedClientCertRequest (WebView view, ClientCertRequest request)
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    public void onReceivedClientCertRequest(WebView view, ClientCertRequest request)
     {
 
         // Check if there is some plugin which can resolve this certificate request
@@ -216,7 +220,7 @@ public class X5WebViewClient extends WebViewClient {
      * @param handler       An SslErrorHandler object that will handle the user's response.
      * @param error         The SSL error object.
      */
-    @TargetApi(8)
+    @TargetApi(Build.VERSION_CODES.FROYO)
     @Override
     public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
 
@@ -240,6 +244,31 @@ public class X5WebViewClient extends WebViewClient {
         }
     }
 
+    @Override
+    public void onReceivedError(WebView webView, WebResourceRequest webResourceRequest,
+            WebResourceError webResourceError) {
+        super.onReceivedError(webView, webResourceRequest, webResourceError);
+        String desc = webResourceError.getDescription().toString();
+        int code = webResourceError.getErrorCode();
+        onReceivedError(webView, code, desc, webView.getUrl());
+
+    }
+
+    @Override
+    public void onReceivedHttpError(WebView webView, WebResourceRequest webResourceRequest,
+            WebResourceResponse webResourceResponse) {
+        super.onReceivedHttpError(webView, webResourceRequest, webResourceResponse);
+    }
+
+    @Override
+    public void onTooManyRedirects(WebView webView, Message message, Message message1) {
+        super.onTooManyRedirects(webView, message, message1);
+    }
+
+    @Override
+    public void onDetectedBlankScreen(String s, int i) {
+        super.onDetectedBlankScreen(s, i);
+    }
 
     /**
      * Sets the authentication token.
