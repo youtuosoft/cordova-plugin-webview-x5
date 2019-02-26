@@ -32,7 +32,6 @@ class X5CookieManager implements ICordovaCookieManager {
     private final CookieManager cookieManager;
 
     //Added because lint can't see the conditional RIGHT ABOVE this
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public X5CookieManager(WebView webview) {
         webView = webview;
         cookieManager = CookieManager.getInstance();
