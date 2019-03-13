@@ -1,5 +1,6 @@
 # ignore project config
 
+.DS_Store
 /.idea/
 /.vscode
 /.history
