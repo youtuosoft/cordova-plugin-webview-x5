@@ -43,6 +43,7 @@ X5：tbs_sdk_thirdapp_v3.5.0.1004_43500_sharewithdownload_withoutGame_obfs_20170
 ## 感谢
 
 此项目继承自项目：https://github.com/runner525/x5webview-cordova-plugin.git
+
 此项目参照的互联网上若干项目
 
 ## 技术支持
