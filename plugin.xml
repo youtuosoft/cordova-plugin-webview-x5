@@ -2,7 +2,7 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android"
         id="cordova-plugin-tbs-webview"
-        version="0.1.3">
+        version="0.1.4">
 
     <name>TBS WebView</name>
     <description>use x5 for cordova to get a better webview browsing experience</description>
