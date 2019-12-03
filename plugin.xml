@@ -44,7 +44,7 @@
 
         <source-file src="platforms/android/src/com/liuxiaoy/cordova/MainApplication.java" target-dir="src/com/liuxiaoy/cordova"/>
 
-        <source-file src="platforms/android/libs/tbs_sdk_thirdapp_v3.5.0.1004_43500_sharewithdownload_withoutGame_obfs_20170801_113025.jar" target-dir="libs"/>
+        <source-file src="platforms/android/libs/tbs_sdk_thirdapp_v4.3.0.1020_43633_sharewithdownload_withoutGame_obfs_20190111_105200.jar" target-dir="libs"/>
 	    <source-file src="platforms/android/libs/armeabi/liblbs.so" target-dir="libs/armeabi"/>
 
     </platform>
