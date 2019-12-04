@@ -49,7 +49,7 @@
 
     </platform>
 
-    <hook type="after_plugin_add" src="scripts/afterPluginInstall.js" />
+    <hook type="after_plugin_install" src="scripts/afterPluginInstall.js" />
     <hook type="before_plugin_rm" src="scripts/beforePluginRemove.js" />
 
     <info>
