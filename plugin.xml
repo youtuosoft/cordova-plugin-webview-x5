@@ -44,17 +44,15 @@
 
         <source-file src="platforms/android/src/com/liuxiaoy/cordova/x5/MainApplication.java" target-dir="src/com/liuxiaoy/cordova/x5"/>
 
-        <source-file src="platforms/android/libs/tbs_sdk_thirdapp_v4.3.0.1020_43633_sharewithdownload_withoutGame_obfs_20190111_105200.jar" target-dir="libs"/>
-	    <source-file src="platforms/android/libs/armeabi/liblbs.so" target-dir="libs/armeabi"/>
+        <framework src="platforms/android/x5.gradle" custom="true" type="gradleReference"/>
 
+        <hook type="after_plugin_install" src="scripts/afterPluginInstall.js" />
+        <hook type="before_plugin_rm" src="scripts/beforePluginRemove.js" />
+
+        <info>
+            If X5 version has upgraded,you can update x5.gradle by yourself.
+            To contact me for any problems about this cordova-plugin-tbs-webview!
+            https://github.com/liuxiaoy/cordova-plugin-tbs-webview/issues
+        </info>
     </platform>
-
-    <hook type="after_plugin_install" src="scripts/afterPluginInstall.js" />
-    <hook type="before_plugin_rm" src="scripts/beforePluginRemove.js" />
-
-    <info>
-        If X5 version has upgraded,you can update TBS(.so and .jar) by yourself.
-        To contact me for any problems about this cordova-plugin-tbs-webview!
-        https://github.com/liuxiaoy/cordova-plugin-tbs-webview/issues
-    </info>
 </plugin>

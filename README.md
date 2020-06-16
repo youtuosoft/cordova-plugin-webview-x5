@@ -34,12 +34,7 @@ QbSdk.initX5Environment(this, null);
 
 ### 当前版本
 
-X5：tbs_sdk_thirdapp_v4.3.0.1020_43633_sharewithdownload_withoutGame_obfs_20190111_105200.jar
-
-## 内核替换
-
-你当然可以手动升级到X5内核最新版，或者替换成精简版内核。你只需要删除``platforms/android/libs/tbs_sdk_*.jar``，替换为你需要使用的版本即可。这会使此插件无法通过``cordova plugin remove``等指令被完全删除，还请注意。
-
+com.tencent.tbs.tbssdk:sdk:43903
 
 ## 感谢
 
@@ -73,10 +68,6 @@ QbSdk.initTbsSettings(map);
 #### 用户的手机上必须要安装微信、qq、qq浏览器等app才能真正使用到X5内核吗？
 
 当手机上有宿主（QQ、微信或QQ空间）时，其他AP只要接入了x5的SDK就会去共享宿主的内核，当没有宿主或是宿主都没有可用的内核时会自己去下载内核
-
-#### 接入X5 SDK时，liblbs.so文件有什么作用，不使用该so文件能否接入成功
-
-该so的作用是在64位手机上以32位环境加载x5内核，如果App自己有相关处理不使用该so也可以正常加载x5内核
 
 ### 常用链接如下：
 
