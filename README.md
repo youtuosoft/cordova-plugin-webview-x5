@@ -1,4 +1,4 @@
-# cordova-plugin-tbs-webview
+# cordova-plugin-webview-x5
 
 把``Cordova``的``WebView``替换为腾讯的[X5](http://x5.tencent.com/)。使用腾讯浏览服务TBS完整版SDK。
 
@@ -22,7 +22,7 @@
 
 ## 安装
 
-``cordova plugin add cordova-plugin-tbs-webview``
+``cordova plugin add cordova-plugin-webview-x5``
 
 为确保App启动后即启动X5内核，需要在项目的``MainApplication``或``MainActivity`的``onCreate``方法内，增加以下代码：
 

@@ -1,16 +1,16 @@
 {
-  "name": "cordova-plugin-tbs-webview",
-  "version": "0.1.6",
+  "name": "cordova-plugin-webview-x5",
+  "version": "0.2.1",
   "description": "Changes the default WebView to x5",
   "cordova": {
-    "id": "cordova-plugin-tbs-webview",
+    "id": "cordova-plugin-webview-x5",
     "platforms": [
       "android"
     ]
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/liuxiaoy/cordova-plugin-tbs-webview.git"
+    "url": "git+https://github.com/liuxiaoy/cordova-plugin-webview-x5.git"
   },
   "keywords": [
     "ecosystem:cordova",
@@ -21,9 +21,9 @@
   "author": "liuxiaoy",
   "license": "Apache 2.0",
   "bugs": {
-    "url": "https://github.com/liuxiaoy/cordova-plugin-tbs-webview/issues"
+    "url": "https://github.com/liuxiaoy/cordova-plugin-webview-x5/issues"
   },
-  "homepage": "https://github.com/liuxiaoy/cordova-plugin-tbs-webview",
+  "homepage": "https://github.com/liuxiaoy/cordova-plugin-webview-x5",
   "engines": [
     {
       "name": "cordova-android",
