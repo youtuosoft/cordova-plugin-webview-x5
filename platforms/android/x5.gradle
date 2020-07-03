@@ -18,5 +18,5 @@
 */
 
 dependencies {
-    api "com.tencent.tbs.tbssdk:sdk:43903"
+    implementation fileTree(dir: 'libs', include: ['x5core.aar'])
 }

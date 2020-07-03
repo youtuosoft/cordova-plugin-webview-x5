@@ -2,7 +2,7 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android"
         id="cordova-plugin-webview-x5"
-        version="0.2.1">
+        version="0.3.1">
 
     <name>TBS WebView</name>
     <description>use x5 for cordova to get a better webview browsing experience</description>
@@ -42,12 +42,9 @@
         <source-file src="platforms/android/src/org/apache/cordova/x5engine/X5WebViewClient.java" target-dir="src/org/apache/cordova/x5engine"/>
         <source-file src="platforms/android/src/org/apache/cordova/x5engine/X5WebViewEngine.java" target-dir="src/org/apache/cordova/x5engine"/>
 
-        <source-file src="platforms/android/src/com/liuxiaoy/cordova/x5/MainApplication.java" target-dir="src/com/liuxiaoy/cordova/x5"/>
+        <source-file src="platforms/android/libs/x5core.aar" target-dir="libs"/>
 
         <framework src="platforms/android/x5.gradle" custom="true" type="gradleReference"/>
-
-        <hook type="after_plugin_install" src="scripts/afterPluginInstall.js" />
-        <hook type="before_plugin_rm" src="scripts/beforePluginRemove.js" />
 
         <info>
             If X5 version has upgraded,you can update x5.gradle by yourself.
