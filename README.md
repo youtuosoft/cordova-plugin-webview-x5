@@ -11,9 +11,10 @@
 - 新浏览器特性支持：如HTTP/2、Service Worker等。
 
 ### 劣势
-- [海外用户量：海外只能共享手机QQ的X5内核](http://x5.tencent.com/tbs/technical.html#/detail/sdk/1/14e9f3f4-ed64-4330-8e31-25d1f1a68cf7)
-- Google Play上架风险：需要使用精简版本SDK，否则可能不予上架。
-- 在某些手机上，app首次运行可能还是使用系统内核
+- Google Play的限制，不允许二进制代码的动态下发，且没有宿主内核可共享，故暂时不支持海外版本的x5使用
+- 没有共享内核时，app会去下载内核包，app用户数据增加不到100M
+- app首次运行使用系统内核后，localStorage，indexdb 等持久化的数据在后面启用x5内核时不同步
+- 静态集成方案，app包增大二三十兆
 
 ## 支持环境
 
