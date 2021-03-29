@@ -12,6 +12,7 @@ public class MainApplication extends android.app.Application {
         // 使用独立 ClassLoader, 需要在内核初始化之前
         HashMap map = new HashMap();
         map.put(TbsCoreSettings.TBS_SETTINGS_USE_PRIVATE_CLASSLOADER, true);
+		QbSdk.setDownloadWithoutWifi(true)
         QbSdk.initTbsSettings(map);
 
         QbSdk.initX5Environment(this, new QbSdk.PreInitCallback() {

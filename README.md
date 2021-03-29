@@ -1,3 +1,4 @@
+添加了允许非wifi网络下载
 # cordova-plugin-webview-x5
 
 把``Cordova``的``WebView``替换为腾讯的[X5](http://x5.tencent.com/)。使用腾讯浏览服务TBS完整版SDK。
@@ -34,7 +35,7 @@ QbSdk.initX5Environment(this, null);
 
 ### 当前版本
 
-com.tencent.tbs.tbssdk:sdk:43903
+com.tencent.tbs.tbssdk:sdk:43993
 
 ## 感谢
 
