@@ -23,13 +23,7 @@
 
 ## 安装
 
-``cordova plugin add cordova-plugin-webview-x5``
-
-为确保App启动后即启动X5内核，需要在项目的``MainApplication``或``MainActivity`的``onCreate``方法内，增加以下代码：
-
-```java
-QbSdk.initX5Environment(this, null);
-```
+``cordova plugin add @youtuosoft/cordova-plugin-webview-x5``
 
 ## 环境
 
