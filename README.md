@@ -23,9 +23,9 @@
 
 ## 安装
 
-1. cordova plugin add @youtuosoft/cordova-plugin-webview-x5
+1. ```cordova plugin add @youtuosoft/cordova-plugin-webview-x5```
 2. 在MainActivity.java中添加以下代码(如果需要首次启动加载x5)
-···java
+```java
 package io.cordova.hellocordova;
 
 import android.os.Bundle;
@@ -63,7 +63,6 @@ public class MainActivity extends CordovaActivity
         loadUrl(launchUrl);
     }
 }
-
 ```
 要加在loadUrl(launchUrl);之前
 
