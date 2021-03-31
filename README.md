@@ -30,7 +30,9 @@ package io.cordova.hellocordova;
 
 import android.os.Bundle;
 import org.apache.cordova.*;
+import com.tencent.smtt.export.external.TbsCoreSettings;
 import com.tencent.smtt.sdk.QbSdk;
+import java.util.HashMap;
 
 public class MainActivity extends CordovaActivity
 {
@@ -43,21 +45,30 @@ public class MainActivity extends CordovaActivity
         if (extras != null && extras.getBoolean("cdvStartInBackground", true)) {
             // moveTaskToBack(true);
         }
-        QbSdk.initX5Environment(this, new QbSdk.PreInitCallback() {
-            @Override
-            public void onCoreInitFinished() {
-                System.out.println(" tbs init ok");
-            }
+        if(!QbSdk.canLoadX5(this)) {
+            HashMap map = new HashMap();
+            map.put(TbsCoreSettings.TBS_SETTINGS_USE_PRIVATE_CLASSLOADER, true);
+            QbSdk.setDownloadWithoutWifi(true);
+            QbSdk.initTbsSettings(map);
+            QbSdk.initX5Environment(this, new QbSdk.PreInitCallback() {
+                @Override
+                public void onCoreInitFinished() {
+                    System.out.println(" tbs init ok1");
+                }
 
-            @Override
-            public void onViewInitFinished(boolean b) {
-                System.out.println(" tbs init view: " + b);
+                @Override
+                public void onViewInitFinished(boolean b) {
+                    System.out.println(" tbs init view1: " + b);
+                }
+            });
+            System.out.println("no can load x5.");
+            try {
+                Thread.sleep(800);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
-        });
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        } else {
+            System.out.println("can load x5.");
         }
         // Set by <content src="index.html" /> in config.xml
         loadUrl(launchUrl);
